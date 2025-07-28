@@ -1,0 +1,33 @@
+<%@ page import="sub1.Account"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<!-- 
+			25/07/28
+			최상규
+			JSP 지시자 실습
+		 -->
+	</head>
+	<body>
+		<h3>지시자(Directive)</h3>
+		
+		<h4>page 지시자</h4>
+		<%
+			Account kb = new Account("국민은행","101-121-0001","홍길동",10000);
+			kb.deposit(40000);
+			kb.withdraw(25000);
+			try{
+				kb.show(out);	
+			}catch(Exception e){
+				e.printStackTrace()
+			}
+			
+			
+		%>
+		<h4>include 지시자</h4>
+		
+	</body>
+</html>

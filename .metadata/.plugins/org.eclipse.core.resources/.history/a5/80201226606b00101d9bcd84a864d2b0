@@ -1,0 +1,23 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSP 내장객체 - request</title>
+		<!-- 
+			25/07/28
+			최상규
+			JSP 내장객체 request 실습하기
+		 -->
+	</head>
+	<body>
+		<h3>JSP 내장객체 - request</h3>
+		
+		<h4>GET 요청</h4>
+		<a href="./proc/result1.jsp?uid=a101">결과 페이지1</a>
+		<a href="./proc/result1.jsp?uid=a102&name=홍길동">결과 페이지2</a>
+		<a href="./proc/result1.jsp">결과 페이지3</a>
+		
+		<h4>POST요청</h4>
+	</body>
+</html>

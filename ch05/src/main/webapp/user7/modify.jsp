@@ -1,4 +1,4 @@
-<%@page import="ch05.User1VO"%>
+<%@page import="ch05.User7VO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -6,32 +6,32 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String user_id = request.getParameter("user_id");
+	String id = request.getParameter("id");
 		
 	String host = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "bisunesskyu";
 	String pass = "1234";
 	
 	//수정할 사용자 객체
-	User1VO user1 = null;
+	User7VO user7 = null;
 	
 	try{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection conn = DriverManager.getConnection(host, user, pass);	
 		
 		
-		String sql = "SELECT * FROM USER1 WHERE USER_ID = ?";
+		String sql = "SELECT * FROM USER7 WHERE ID = ?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, user_id);
+		psmt.setString(1, id);
 		
 		ResultSet rs = psmt.executeQuery();
 		
 		if(rs.next()){
-			user1 = new User1VO();
-			user1.setUser_id(rs.getString(1));
-			user1.setName(rs.getString(2));
-			user1.setHp(rs.getString(3));
-			user1.setAge(rs.getInt(4));
+			user7 = new User7VO();
+			user7.setId(rs.getInt(1));
+			user7.setName(rs.getString(2));			
+			user7.setAge(rs.getInt(3));
+			user7.setEmail(rs.getString(4));
 		}
 		
 		rs.close();
@@ -47,10 +47,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user1::modify</title>
+		<title>user7::modify</title>
 	</head>
 	<body>
-		<h3>User1 수정</h3>
+		<h3>User7 수정</h3>
 		
 		<a href="../jdbc.jsp">처음으로</a>
 		<a href="./list.jsp">목록이동</a>
@@ -59,19 +59,19 @@
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="user_id" value="<%=user1.getUser_id() %>" readonly /></td>
+					<td><input type="text" name="id" value="<%=user7.getId() %>" readonly /></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" value="<%=user1.getName() %>"/></td>
-				</tr>
-				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="hp" value="<%=user1.getHp() %>"/></td>
+					<td><input type="text" name="name" value="<%=user7.getName() %>"/></td>
 				</tr>
 				<tr>
 					<td>나이</td>
-					<td><input type="number" name="age" value="<%=user1.getAge() %>"/></td>
+					<td><input type="number" name="age" value="<%=user7.getAge() %>"/></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email" value="<%=user7.getEmail() %>"/></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">

@@ -4,10 +4,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//전송 데이터 수신
-	String user_id = request.getParameter("user_id");
+	String seq = request.getParameter("seq");
 	String name = request.getParameter("name");
-	String hp = request.getParameter("hp");
+	String gender = request.getParameter("gender");
 	String age = request.getParameter("age");
+	String addr = request.getParameter("addr");
 	
 	//데이터베이스 INSERT
 	String host = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -22,13 +23,14 @@
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		
 		//SQL 실행 객체 생성
-		String sql = "UPDATE USER1 SET NAME = ? , HP = ?, AGE = ? WHERE USER_ID = ?";
+		String sql = "UPDATE USER6 SET NAME = ? , GENDER = ?, AGE = ?, ADDR = ? WHERE SEQ = ?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		
-		psmt.setString(1, name);
-		psmt.setString(2, hp);
-		psmt.setString(3, age);
-		psmt.setString(4, user_id);
+		psmt.setString(1, seq);
+		psmt.setString(2, name);
+		psmt.setString(3, gender);
+		psmt.setString(4, age);
+		psmt.setString(5, addr);
 		
 		//SQL실행
 		psmt.executeUpdate();

@@ -6,7 +6,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	String user_id = request.getParameter("user_id");
+	String name = request.getParameter("name");
 		
 	String host = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "bisunesskyu";
@@ -22,7 +22,7 @@
 		
 		String sql = "SELECT * FROM USER5 WHERE NAME = ?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, user_id);
+		psmt.setString(1, name);
 		
 		ResultSet rs = psmt.executeQuery();
 		

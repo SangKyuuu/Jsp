@@ -73,8 +73,8 @@
 					<td><%=user6VO.getAddr() %></td>
 					<td>
 						<!-- 수정하고자 하는 사용자 아이디를 modify.jsp로 전송 -->
-						<a href="./modify.jsp?user_id=<%=user6VO.getSeq()%>">수정</a>
-						<a href="./delete.jsp?user_id=<%=user6VO.getSeq()%>">삭제</a>
+						<a href="./modify.jsp?seq=<%=user6VO.getSeq()%>">수정</a>
+						<a href="./delete.jsp?seq=<%=user6VO.getSeq()%>">삭제</a>
 					</td>
 				</tr>
 			<% } %>		

@@ -70,8 +70,8 @@
 					<td><%=user5VO.getAddr() %></td>
 					<td>
 						<!-- 수정하고자 하는 사용자 아이디를 modify.jsp로 전송 -->
-						<a href="./modify.jsp?user_id=<%=user5VO.getName()%>">수정</a>
-						<a href="./delete.jsp?user_id=<%=user5VO.getName()%>">삭제</a>
+						<a href="./modify.jsp?name=<%=user5VO.getName()%>">수정</a>
+						<a href="./delete.jsp?name=<%=user5VO.getName()%>">삭제</a>
 					</td>
 				</tr>
 			<% } %>		

@@ -60,7 +60,7 @@
 			<table border="1">
 				<tr>
 					<td>번호</td>
-					<td><input type="text" name="user_id" value="<%=user6.getSeq() %>" readonly /></td>
+					<td><input type="text" name="seq" value="<%=user6.getSeq() %>" readonly /></td>
 				</tr>
 				<tr>
 					<td>이름</td>

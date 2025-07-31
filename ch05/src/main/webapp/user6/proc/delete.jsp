@@ -4,10 +4,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//전송 데이터 수신
-	String user_id = request.getParameter("user_id");
-	String name = request.getParameter("name");
-	String hp = request.getParameter("hp");
-	String age = request.getParameter("age");
+	String seq = request.getParameter("seq");
 	
 	//데이터베이스 INSERT
 	String host = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -22,11 +19,11 @@
 		Connection conn = DriverManager.getConnection(host, user, pass);
 		
 		//SQL 실행 객체 생성
-		String sql = "DELETE FROM USER1 WHERE USER_ID = ?";
+		String sql = "DELETE FROM USER6 WHERE SEQ = ?";
 		
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		
-		psmt.setString(1, user_id);
+		psmt.setString(1, seq);
 		
 		//SQL실행
 		psmt.executeUpdate();

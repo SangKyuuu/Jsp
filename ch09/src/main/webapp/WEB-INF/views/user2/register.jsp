@@ -3,27 +3,31 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user7::register</title>
+		<title>user1::register</title>
 	</head>
 	<body>
-		<h3>User7 등록</h3>
+		<h3>User1 등록</h3>
 		
-		<a href="../jdbc.jsp">처음으로</a>
-		<a href="./list.jsp">목록이동</a>
+		<a href="/ch09">처음으로</a>
+		<a href="/ch09/user1/list.do">목록이동</a>
 		
-		<form action="./proc/register.jsp" method="post">
+		<form action="/ch09/user1/register.do" method="post">
 			<table border="1">
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="user_id" /></td>
+				</tr>
 				<tr>
 					<td>이름</td>
 					<td><input type="text" name="name" /></td>
 				</tr>
 				<tr>
-					<td>나이</td>
-					<td><input type="number" name="age" /></td>
+					<td>휴대폰</td>
+					<td><input type="text" name="hp" /></td>
 				</tr>
 				<tr>
-					<td>이메일</td>
-					<td><input type="email" name="email" /></td>
+					<td>나이</td>
+					<td><input type="number" name="age" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">

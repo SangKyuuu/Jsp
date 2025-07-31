@@ -1,4 +1,4 @@
-<%@page import="ch05.User1VO"%>
+<%@page import="ch05.User6VO"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -13,25 +13,26 @@
 	String pass = "1234";
 	
 	//수정할 사용자 객체
-	User1VO user1 = null;
+	User6VO user6 = null;
 	
 	try{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection conn = DriverManager.getConnection(host, user, pass);	
 		
 		
-		String sql = "SELECT * FROM USER1 WHERE USER_ID = ?";
+		String sql = "SELECT * FROM USER6 WHERE USER_ID = ?";
 		PreparedStatement psmt = conn.prepareStatement(sql);
 		psmt.setString(1, user_id);
 		
 		ResultSet rs = psmt.executeQuery();
 		
 		if(rs.next()){
-			user1 = new User1VO();
-			user1.setUser_id(rs.getString(1));
-			user1.setName(rs.getString(2));
-			user1.setHp(rs.getString(3));
-			user1.setAge(rs.getInt(4));
+			user6 = new User6VO();
+			user6.setSeq(rs.getInt(1));
+			user6.setName(rs.getString(2));
+			user6.setGender(rs.getString(3));
+			user6.setAge(rs.getInt(4));
+			user6.setAddr(rs.getString(5));
 		}
 		
 		rs.close();
@@ -47,10 +48,10 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>user1::modify</title>
+		<title>user6::modify</title>
 	</head>
 	<body>
-		<h3>User1 수정</h3>
+		<h3>user6 수정</h3>
 		
 		<a href="../jdbc.jsp">처음으로</a>
 		<a href="./list.jsp">목록이동</a>
@@ -58,20 +59,30 @@
 		<form action="./proc/modify.jsp" method="post">
 			<table border="1">
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="user_id" value="<%=user1.getUser_id() %>" readonly /></td>
+					<td>번호</td>
+					<td><input type="number" name="seq" value="<%=user6.getSeq() %>" readonly/></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" value="<%=user1.getName() %>"/></td>
+					<td><input type="text" name="name" value="<%=user6.getName() %>" /></td>
 				</tr>
 				<tr>
-					<td>휴대폰</td>
-					<td><input type="text" name="hp" value="<%=user1.getHp() %>"/></td>
+					<td>성별</td>
+					<%if(user6.getGender().equals("M")){  %>
+						<td><input type="radio" name="gender" value="M" checked="checked"/>남자</td>
+						<td><input type="radio" name="gender" value="F" readonly/>여자</td>
+					<%} else{ %>
+						<td><input type="radio" name="gender" value="M" readonly/>남자</td>
+						<td><input type="radio" name="gender" value="F" checked="checked"/>여자</td>
+					<%} %>
 				</tr>
 				<tr>
 					<td>나이</td>
-					<td><input type="number" name="age" value="<%=user1.getAge() %>"/></td>
+					<td><input type="number" name="age" value="<%=user6.getAge() %>" /></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><input type="text" name="name" value="<%=user6.getAddr() %>" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">

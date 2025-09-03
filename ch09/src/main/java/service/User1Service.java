@@ -24,8 +24,8 @@ public class User1Service {
 	
 	
 	//DAO 메서드 호출 - Service에 맞게 네이밍
-	public void register(User1DTO dto) {
-		dao.insertUser1(dto);
+	public int register(User1DTO dto) {
+		return dao.insertUser1(dto);
 	}
 	
 	public User1DTO findById(String user_id) {
@@ -36,11 +36,11 @@ public class User1Service {
 		return dao.selectAllUser1();
 	}
 	
-	public void modify(User1DTO dto) {
-		dao.updateUser1(dto);
+	public int modify(User1DTO dto) {
+		return dao.updateUser1(dto);
 	}
 	
-	public void delete(String user_id) {
-		dao.deleteUser1(user_id);
+	public int delete(String user_id) {
+		return dao.deleteUser1(user_id);
 	}
 }

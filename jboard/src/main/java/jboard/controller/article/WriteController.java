@@ -65,7 +65,7 @@ public class WriteController extends HttpServlet{
 			fileService.register(fileDTO);
 		}
 		
-		resp.sendRedirect("/jboard/article/list.do?code=" + ResultCode.WRITER_SUCCESS.getCode());
+		resp.sendRedirect("/jboard/article/list.do?code=" + ResultCode.WRITE_SUCCESS.getCode());
 	}
 
 }

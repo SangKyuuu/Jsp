@@ -49,7 +49,9 @@
             </c:if>
         </div>
 
-        <a href="/jboard/article/write.do" class="btn btnWrite">글쓰기</a>
+        <c:if test="${role != 'GUEST'}">
+        	<a href="/jboard/article/write.do" class="btn btnWrite">글쓰기</a>
+        </c:if>
         
     </section>
 </main>
